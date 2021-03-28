@@ -9,14 +9,18 @@
   --darkBlue: #00214d;
   --grey: #bfbfbf;
   --lightGrey: #f2f4f6;
-  --white: white;
+  --darkGrey: #222;
+  --white: #fff;
   /* Define the colors intentions */
   --primary: var(--green);
   --danger: var(--red);
   --background: var(--lightgrey);
-  --blockQuote: var(--white);
   --textColor: var(--black);
+  --buttonTextColor: var(--white);
   --lineColor: var(--grey);
+  --cardBg: var(--white);
+  --headerBackground: var(--darkBlue);
+  --footerBackground: var(--black);
 
   /* Styles */
   --line: solid 1px var(--lineColor);
@@ -44,6 +48,7 @@
   /* Positioning */
   --containerPadding: 2.5%;
   --headerHeight: 3rem;
+  --border-radius: 10px;
 }
 
 /* From Typescale */
@@ -68,7 +73,6 @@ body {
 }
 
 header {
-  --headerBackground: var(--darkBlue);
   color: white;
   position: fixed;
   left: 0;
@@ -95,7 +99,7 @@ header nav a + a {
 footer {
   --footerTextColor: var(--lightGrey);
   color: var(--footerTextColor);
-  background: var(--black);
+  background: var(--footerBackground);
   padding: 2rem var(--containerPadding);
   text-align: center;
 }
@@ -116,7 +120,7 @@ p {
 
 p a,
 blockquote a {
-  color: var(--black);
+  color: var(--textColor);
   text-decoration: none;
   border-bottom: solid 2px var(--primary);
   cursor: pointer;
@@ -161,16 +165,10 @@ small,
 
 /* End Typescale */
 
-.dark {
-  --background: var(--black);
-  --textColor: var(--lightGrey);
-  --blockQuote: var(--darkBlue);
-}
-
 blockquote {
   margin: 10px;
   padding: 2em;
-  background: var(--blockQuote);
+  background: var(--cardBg);
   box-shadow: var(--level-3);
 }
 
@@ -202,7 +200,7 @@ hr {
 button {
   --buttonColor: var(--primary);
   appearance: none;
-  color: var(--textColor);
+  color: var(--buttonTextColor);
   background: var(--buttonColor);
   border: none;
   border-radius: 10px;
@@ -252,6 +250,11 @@ button.small {
   --justifyContent: space-around;
 }
 
+.split {
+  display: block;
+  grid-template-columns: 33% 67%;
+  grid-gap: 20px;
+}
 @media only screen and (min-width: 500px) {
   :root {
     --baseFontSize: 112.5%;
@@ -262,9 +265,39 @@ button.small {
   .flex {
     display: flex;
   }
+  .split {
+    display: grid;
+  }
 }
 
 .fake-logo {
   margin: 0;
   font-size: var(--baseFontSize);
+}
+
+.card {
+  padding: 2em;
+  background: var(--cardBg);
+  box-shadow: var(--level-3);
+  border-radius: var(--border-radius);
+}
+
+/* First item will never have margin top */
+.card > *:first-child {
+  margin-top: 0;
+}
+
+/* Last item will never have margin bottom */
+.card > *:last-child {
+  margin-top: 0;
+}
+
+.dark {
+  --background: var(--black);
+  --textColor: var(--lightGrey);
+  --blockQuote: var(--darkBlue);
+  --headerBackground: var(--darkGrey);
+  --cardBg: var(--darkGrey);
+  --buttonTextColor: var(--black);
+  --footerBackground: var(--darkGrey);
 }
