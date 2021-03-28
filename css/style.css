@@ -9,8 +9,12 @@
   --darkBlue: #00214d;
   --grey: #bfbfbf;
   --lightGrey: #f2f4f6;
+  --white: white;
   /* Define the colors intentions */
+  --primary: var(--green);
+  --danger: var(--red);
   --background: var(--lightgrey);
+  --blockQuote: var(--white);
   --textColor: var(--black);
   --lineColor: var(--grey);
 
@@ -50,7 +54,7 @@ p a,
 blockquote a {
   color: var(--black);
   text-decoration: none;
-  border-bottom: solid 2px var(--green);
+  border-bottom: solid 2px var(--primary);
   cursor: pointer;
 }
 
@@ -101,12 +105,13 @@ body {
 .dark {
   --background: var(--black);
   --textColor: var(--lightGrey);
+  --blockQuote: var(--grey);
 }
 
 blockquote {
   margin: 10px;
   padding: 2em;
-  background: white;
+  background: var(--blockQuote);
 }
 
 label {
@@ -132,4 +137,31 @@ textarea {
 
 hr {
   border-top: var(--line);
+}
+
+button {
+  --buttonColor: var(--primary);
+  appearance: none;
+  color: var(--textColor);
+  background: var(--buttonColor);
+  border: none;
+  border-radius: 10px;
+  padding: 5px 25px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+}
+
+button[disabled] {
+  opacity: 0.4;
+}
+
+button.cancel {
+  --buttonColor: var(--danger);
+  --textColor: var(--white);
+}
+
+button.small {
+  font-size: var(--smallText);
 }
