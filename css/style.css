@@ -24,6 +24,7 @@
   /* Type */
   --headingFont: "Space Mono", monospace;
   --bodyFont: "Work Sans", sans-serif;
+  --baseFontSize: 100%;
   --h1: 3.052rem;
   --h2: 2.441rem;
   --h3: 1.953rem;
@@ -39,19 +40,73 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --level-4: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Positioning */
+  --containerPadding: 2.5%;
+  --headerHeight: 3rem;
 }
 
 /* From Typescale */
 html {
-  font-size: 100%;
+  font-size: var(--baseFontSize);
   background: var(--lightGrey);
-} /*16px*/
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 body {
   font-family: var(--bodyFont);
+  background: var(--background);
+  color: var(--textColor);
   font-weight: 400;
   line-height: 1.75;
-  padding-bottom: 300px;
+}
+
+header {
+  --headerBackground: var(--darkBlue);
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--headerHeight);
+  background: var(--headerBackground);
+  box-shadow: var(--level-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--containerPadding);
+}
+
+header nav a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+header nav a + a {
+  margin-left: 10px;
+}
+
+footer {
+  --footerTextColor: var(--lightGrey);
+  color: var(--footerTextColor);
+  background: var(--black);
+  padding: 2rem var(--containerPadding);
+  text-align: center;
+}
+
+footer a {
+  color: var(--footerTextColor);
+}
+
+footer p {
+  margin-bottom: 0;
+  max-width: none;
 }
 
 p {
@@ -106,15 +161,10 @@ small,
 
 /* End Typescale */
 
-body {
-  background: var(--background);
-  color: var(--textColor);
-}
-
 .dark {
   --background: var(--black);
   --textColor: var(--lightGrey);
-  --blockQuote: var(--grey);
+  --blockQuote: var(--darkBlue);
 }
 
 blockquote {
@@ -179,13 +229,12 @@ button.small {
 }
 
 .layout {
-  margin: 0 auto;
-  width: 95%;
+  padding: calc(3rem + var(--headerHeight)) var(--containerPadding);
 }
 
 .grid {
   --gridCols: 2;
-  display: grid;
+  display: block;
   grid-template-columns: repeat(var(--gridCols), 1fr);
 }
 
@@ -195,10 +244,27 @@ button.small {
 
 .flex {
   --justifyContent: space-between;
-  display: flex;
+  display: block;
   justify-content: var(--justifyContent);
 }
 
 .flex-around {
   --justifyContent: space-around;
+}
+
+@media only screen and (min-width: 500px) {
+  :root {
+    --baseFontSize: 112.5%;
+  }
+  .grid {
+    display: grid;
+  }
+  .flex {
+    display: flex;
+  }
+}
+
+.fake-logo {
+  margin: 0;
+  font-size: var(--baseFontSize);
 }
