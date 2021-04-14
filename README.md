@@ -1,5 +1,7 @@
 # oliver
 
-Oliver CSS starter stylesheet
+https://www.stephenstuder.com/oliver-css
 
-<img src"img/FullSizeRender.JPG" alt="oliver" width="700"/>
+## Oliver CSS starter stylesheet
+
+This is a classless and themed css style sheet for my projects moving forward.
